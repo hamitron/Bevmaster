@@ -5,10 +5,12 @@ class BeveragesController < ApplicationController
 
   def new
     @beverage = Beverage.new
+    @colors = Color.all
   end
 
   def create
     @beverage = Beverage.new(beverage_params)
+    @colors = Color.all
     if @beverage.save
       redirect_to beverages_path
     else

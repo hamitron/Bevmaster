@@ -1,6 +1,15 @@
-Color Select
+<style>
+.colorSwatch {
+	width: 100px;
+	height: 100px;
+}
+
+
+</style>
+
+<h1>Color Selects</h1>
 
 <% @colors.each do |color| %>
 <%= color.name %>
-<%= color.value %>
+<div class="colorSwatch" style="background-color:<%= color.value %>"></div>
 <% end %>

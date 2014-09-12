@@ -1,5 +1,8 @@
 <%= form_for @beverage do |f|%>
 <%= f.text_field :name, placeholder: "Name" %>
 <%= f.number_field :edition %>
+<%#= form_for @colors.each  do |c| %>
+	<%#= c.collection_check_boxes f.color %>
+	<%# end %> 
 <%= f.submit %>
 <% end %>

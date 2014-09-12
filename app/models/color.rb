@@ -1,6 +1,8 @@
 class Color < ActiveRecord::Base
 
-belongs_to :design
-belongs_to :beverage
+
+
+has_many :beverage_colors
+has_many :beverages, through: :beverage_colors
 
 end

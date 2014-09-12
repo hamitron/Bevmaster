@@ -9,3 +9,5 @@ User.create(name: 'Hamilton', password: 'test', password_confirmation: 'test', e
 Beverage.create(name: 'Beverage A', edition: 1)
 Color.create(name: 'Midnight', value: '#000000')
 
+
+

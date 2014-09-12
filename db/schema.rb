@@ -24,17 +24,26 @@ ActiveRecord::Schema.define(version: 20140911190735) do
   end
 
   create_table "colors", force: true do |t|
+    t.string   "name"
     t.string   "value"
+    t.integer  "beverage_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "colors", ["beverage_id"], name: "index_colors_on_beverage_id", using: :btree
+
   create_table "designs", force: true do |t|
     t.string   "name"
     t.string   "format"
+    t.integer  "user_id"
+    t.integer  "beverage_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "designs", ["beverage_id"], name: "index_designs_on_beverage_id", using: :btree
+  add_index "designs", ["user_id"], name: "index_designs_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -45,8 +54,14 @@ ActiveRecord::Schema.define(version: 20140911190735) do
   end
 
   create_table "votes", force: true do |t|
+    t.boolean  "approval"
+    t.integer  "user_id"
+    t.integer  "beverage_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["beverage_id"], name: "index_votes_on_beverage_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
