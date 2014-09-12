@@ -1,5 +1,6 @@
 class BeveragesController < ApplicationController
   def index
+    @beverages = Beverage.all
   end
 
   def new
@@ -7,8 +8,8 @@ class BeveragesController < ApplicationController
   end
 
   def create
-    @beverage = Beverage.new
-    if @beverage.save(beverage_params)
+    @beverage = Beverage.new(beverage_params)
+    if @beverage.save
       redirect_to beverages_path
     else
       render 'new'
@@ -16,17 +17,25 @@ class BeveragesController < ApplicationController
   end
 
   def edit
+    @beverage = Beverage.find(params[:id])
+
   end
 
   def destroy
   end
 
   def update
+    @beverage = Beverage.find(params[:id])
+    if @beverage.update(beverage_params)
+      redirect_to beverages_path
+    else
+      render 'edit'
+    end
   end
 
 private
   def beverage_params
     params.require(:beverage).permit(:name, :colors, :edition)
-
+  end
 
 end

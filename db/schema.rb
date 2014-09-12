@@ -18,12 +18,13 @@ ActiveRecord::Schema.define(version: 20140911190735) do
 
   create_table "beverages", force: true do |t|
     t.string   "name"
-    t.string   "colors"
+    t.integer  "edition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "colors", force: true do |t|
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
