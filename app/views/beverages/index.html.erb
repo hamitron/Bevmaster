@@ -1,6 +1,23 @@
+<style>
+.colorSwatch {
+	width: 10px;
+	height: 10px;
+	margin: 10px;
+	display: inline-block;
+}
+
+
+</style>
+
 <h1>Beverages#index</h1>
 
 <% @beverages.each do |b| %>
 <p>NAME <%= b.name  %></p>
 <p>EDITION <%= b.edition %></p>
+<% b.colors.each do |c| %>
+<%= c.name %>
+<div class="colorSwatch" style="background-color:<%= c.value %>"></div>
+
+<% end %>
+<br>
 <% end %>

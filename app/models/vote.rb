@@ -1,6 +1,7 @@
 class Vote < ActiveRecord::Base
 
-belongs_to :user, through: :design
-belongs_to :beverage
+belongs_to :user
+belongs_to :design
+
 
 end

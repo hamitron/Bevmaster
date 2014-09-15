@@ -1,8 +1,15 @@
 <%= form_for @beverage do |f|%>
 <%= f.text_field :name, placeholder: "Name" %>
 <%= f.number_field :edition %>
-<%#= form_for @colors.each  do |c| %>
-	<%#= c.collection_check_boxes f.color %>
-	<%# end %> 
+<!-- create associated colors -->
+<%= f.fields_for :colors do |color|%>
+<%= color.text_field :name, placeholder: "Name" %>
+<%= color.color_field :value %> Hex Value Color - include #
+
+<% end %>
+
+
 <%= f.submit %>
 <% end %>
+
+

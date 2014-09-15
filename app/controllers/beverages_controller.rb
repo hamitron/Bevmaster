@@ -5,12 +5,15 @@ class BeveragesController < ApplicationController
 
   def new
     @beverage = Beverage.new
-    @colors = Color.all
+    3.times {@beverage.colors.build}
+
+
   end
 
   def create
     @beverage = Beverage.new(beverage_params)
-    @colors = Color.all
+
+
     if @beverage.save
       redirect_to beverages_path
     else
@@ -37,7 +40,7 @@ class BeveragesController < ApplicationController
 
 private
   def beverage_params
-    params.require(:beverage).permit(:name, :colors, :edition)
+    params.require(:beverage).permit(:name, :edition, colors_attributes:[:id, :name, :value])
   end
 
 end
