@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  before_action :user_find, only: [:show, :edit, :update, :destroy]
+
   def index
+    @users = User.all
   end
 
   def new
@@ -10,11 +13,14 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect root_path
+      redirect new_sessions_path
     else
       render 'new'
     end
 
+  end
+
+  def show
   end
 
   def edit
@@ -26,8 +32,11 @@ class UsersController < ApplicationController
   def update
   end
 
+private
+  def user_find
+    @user = User.find(params[:id])
 
-  private
+  end
   def user_params
     params.require(:user).permit(:name, :type, :email, :password, :password_confirmation)
   end

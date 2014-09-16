@@ -1,0 +1,5 @@
+<%= form_for @design do |f| %>
+<%= f.text_field :name, placeholder: "Name"%>
+<%= f.collection_select :beverage_id, Beverage.all, :id, :name %>
+<%= f.submit %>
+<% end %>
