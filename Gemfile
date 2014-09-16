@@ -14,6 +14,9 @@ gem 'angularjs-rails'
 
 #colors css gem
 gem 'clrs'
+
+#state machine for voting. more than true false
+gem 'state_machine', '~>1.2.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

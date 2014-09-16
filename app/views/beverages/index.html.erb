@@ -12,12 +12,22 @@
 <h1>Beverages#index</h1>
 
 <% @beverages.each do |b| %>
+<div class="col-md-2">
 <p>NAME <%= b.name  %></p>
 <p>EDITION <%= b.edition %></p>
-<% b.colors.each do |c| %>
-<%= c.name %>
-<div class="colorSwatch" style="background-color:<%= c.value %>"></div>
 
-<% end %>
-<br>
+<svg x="0px" y="0px" viewBox="0 0 297 474">
+<g>
+	<polygon fill=<%=b.colors[2].value %> points="91.2,439 32,387.1 32,73.8 91.2,24 206.8,24 264,73.9 264,387.1 206.8,439 	"/>
+	<path d="M205.9,27L261,75v311l-55.1,51H92.1L34,386V75l58.1-48H206 M207.7,22h-1.9H92.1h-1.8l-1.4,0.9L31,71.3l-2,1.4V75v311v2.3
+		l2,1.5l57.8,50.8l1.5,1.5h1.9h113.7h1.9l1.4-1.5l55.4-50.6l1.4-1.6V386V75v-2.3l-1.5-1.5L209,23L207.7,22L207.7,22z"/>
+</g>
+<polyline fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="261.7,74.5 204.9,124.5 91.1,124.5 
+	34.3,74.8 "/>
+<polygon fill=<%=b.colors[0].value%> points="34,76 92,127 92,437 34,386 "/>
+<polygon fill=<%=b.colors[1].value%> points="206,127 262,77 262,385 206,438 "/>
+</svg>
+
+</div>
+
 <% end %>

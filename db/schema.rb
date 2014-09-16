@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140911190735) do
   create_table "beverages", force: true do |t|
     t.string   "name"
     t.integer  "edition"
+    t.string   "svg_element"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,14 +55,15 @@ ActiveRecord::Schema.define(version: 20140911190735) do
   end
 
   create_table "votes", force: true do |t|
-    t.boolean  "approval"
     t.integer  "user_id"
-    t.integer  "beverage_id"
+    t.integer  "design_id"
+    t.integer  "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["beverage_id"], name: "index_votes_on_beverage_id", using: :btree
+  add_index "votes", ["design_id"], name: "index_votes_on_design_id", using: :btree
+  add_index "votes", ["state"], name: "index_votes_on_state", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
