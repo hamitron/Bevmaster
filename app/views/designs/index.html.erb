@@ -4,6 +4,10 @@ show all designs?
 
 <ul class="list-group">
 <% @designs.each do |design| %>
-<li class="list-group-item"> <%= design.name %>, BEVERAGE NAME: <%= Beverage.find(design.beverage_id).name %>, CREATOR: <%= User.find(design.user_id).name %></li>
+<li class="list-group-item"> <%= design.name %>, BEVERAGE NAME: <%= Beverage.find(design.beverage_id).name %>, CREATOR: <%= User.find(design.user_id).name %>
+
+
+
+</li>
 <% end %>
 </ul>
