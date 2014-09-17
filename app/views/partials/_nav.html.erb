@@ -1,2 +1,7 @@
 
-<p>current USER is: <%= current_user.name %> id= <%= current_user.id %></p>
+<p>current USER is: <% if current_user %> 
+<%= current_user.name %> id= <%= current_user.id %>
+<% else %>
+SIGN IN OR UP 
+<% end %>
+</p>
