@@ -1,10 +1,8 @@
 class User < ActiveRecord::Base
 
-
-
 has_secure_password 
 
-has_many :designs
+has_many :beverages
 has_many :votes
 
 

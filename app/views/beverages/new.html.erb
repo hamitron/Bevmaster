@@ -1,10 +1,11 @@
+<div class="container">
+<div class="col-md-6">
 <%= form_for @beverage do |f|%>
-<%= f.text_field :name, placeholder: "Name" %>
-<%= f.number_field :edition %>
+<p><%= f.text_field :name, placeholder: "Name" %></p>
 <!-- create associated colors -->
 <%= f.fields_for :colors do |color|%>
-<%= color.text_field :name, placeholder: "Name" %>
-<%= color.color_field :value %> Hex Value Color - include #
+<%= color.text_field :name, placeholder: "Color Name" %>
+<%= color.color_field :value %> 
 
 <% end %>
 
@@ -13,3 +14,5 @@
 <% end %>
 
 
+</div>
+</div>

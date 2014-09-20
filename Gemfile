@@ -42,6 +42,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 group :development, :test do
 gem 'rspec-rails', '~> 3.0.0'
+gem 'better_errors'
 gem 'shoulda-matchers'
 gem 'jasmine', github: "pivotal/jasmine-gem"
 gem "capybara"

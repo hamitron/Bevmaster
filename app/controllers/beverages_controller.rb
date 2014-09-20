@@ -1,17 +1,20 @@
 class BeveragesController < ApplicationController
   def index
     @beverages = Beverage.all
+
   end
 
   def new
-    @beverage = Beverage.new
+    @user = User.find(current_user.id)
+    @beverage = @user.beverages.new
     3.times {@beverage.colors.build}
 
 
   end
 
   def create
-    @beverage = Beverage.new(beverage_params)
+    @user = User.find(current_user.id)
+    @beverage = @user.beverages.new(beverage_params)
 
 
     if @beverage.save
@@ -19,6 +22,11 @@ class BeveragesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @beverage = Beverage.find(params[:id])
+    @votes = Vote.new
   end
 
   def edit
@@ -40,7 +48,7 @@ class BeveragesController < ApplicationController
 
 private
   def beverage_params
-    params.require(:beverage).permit(:name, :edition, colors_attributes:[:id, :name, :value])
+    params.require(:beverage).permit(:name, colors_attributes:[:id, :name, :value])
   end
 
 end

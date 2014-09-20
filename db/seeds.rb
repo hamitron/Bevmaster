@@ -8,9 +8,8 @@
 
 
 User.create(name: 'Hamilton', password: 'test', password_confirmation: 'test', email: 'Hqkarl@gmail.com')
-Beverage.create(name: 'Beverage A', edition: 1)
-Color.create(value: '#000000', name:"midnight", beverage_id: Beverage.first)
-Color.create(value: '#FFF000', name: "surprise", beverage_id: Beverage.first)
-Color.create(value: '#FF1100', name: "super", beverage_id: Beverage.first)
+User.create(name: 'Willaim', password: 'test', password_confirmation: 'test', email: 'test@test.com')
+
+
 
 

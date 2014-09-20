@@ -5,22 +5,25 @@ def index
 end
 
 
-def show
+def new
+	@design = Design.find(params[:id])
+	@vote = @design.votes.new
 end
 
 def create
-	@user = User.find(current_user.id)
-	@vote = @user.votes.new(vote_params)
-	if @vote.save
-		redirect_to designs_path
-	end
-
+	@beverage = Beverage.all
+    @vote = Vote.new(vote_params)
+    if @vote.save
+      redirect_to beverages_path
+    else
+      render 'new'
+    end
 end
 
 
 private
 def vote_params
-	params.require(:vote).permit(:state, :design_id, :user_id)
+	params.require(:vote).permit(:state, :user_id)
 end
 
 

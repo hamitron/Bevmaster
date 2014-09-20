@@ -2,10 +2,13 @@ class DesignsController < ApplicationController
 
 def index
 	@designs = Design.all
+
+
 end
 
 def show
 	@design = Design.find(params[:id])	
+	@vote = Vote.create_with(@design.id)
 end
 
 
@@ -16,7 +19,10 @@ end
 def create
 
 	@user = User.find(current_user.id)
+
 	@design = @user.designs.new(design_params)
+
+
 	if @design.save
 		redirect_to designs_path
 	else
@@ -40,7 +46,7 @@ def design_find
 end
 
 def design_params
-	params.require(:design).permit(:name, :format, :beverage_id, :user_id)
+	params.require(:design).permit(:name, :format, :beverage_id)
 end
 
 

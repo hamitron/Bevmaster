@@ -1,8 +1,9 @@
 class Beverage < ActiveRecord::Base
 
-
-has_many :designs
+belongs_to :user
+has_many :votes
 has_many :colors
 accepts_nested_attributes_for :colors
+accepts_nested_attributes_for :votes
 
 end

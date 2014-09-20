@@ -2,12 +2,13 @@ Design Index
 
 show all designs?
 
-<ul class="list-group">
+
 <% @designs.each do |design| %>
-<li class="list-group-item"> <%= design.name %>, BEVERAGE NAME: <%= Beverage.find(design.beverage_id).name %>, CREATOR: <%= User.find(design.user_id).name %>
+<div class="col-md-3">
+<h3><%= link_to design.name, design_path(design) %></h3>
+<p><%= Beverage.find(design.beverage_id).name %></p>
+<p> by <%= User.find(design.user_id).name %> </p>
 
 
-
-</li>
+</div>
 <% end %>
-</ul>
