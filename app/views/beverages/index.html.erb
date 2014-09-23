@@ -1,33 +1,47 @@
-<h1>Beverages#index</h1>
 
+<div class="container">
 <% @beverages.each do |b| %>
-<div class="col-md-3">
+
+<div class="col-md-4">
 
 <svg viewBox="0 0 960 560">
 <g>
 <polygon fill=<%=b.colors[0].value %> 
 	points="412.3,518.6 342.4,457.3 342.4,87.2 412.3,28.4 548.9,28.4 616.5,87.3 616.5,457.3 548.9,518.6"/>
-<path 
-	d="M547.8,31.9l65.1,56.7v366.5l-65.1,61.3l-134.4-0.1L344.7,456V88.6l68.6-56.7h134.6 M549.9,26h-2.2H413.4h-2.1l-1.7,1.1
-		l-68.4,57.2l-2.4,1.7v2.7V456v2.7l2.4,1.8l68.3,60l1.8,1.8h2.2h134.3h2.2l1.7-1.8l65.5-59.8l1.7-1.9V456V88.6v-2.7l-1.8-1.8
-		l-65.6-56.9L549.9,26L549.9,26z"
-/>
+
 </g>
 <polyline fill="#888888" points="345.6,87.2 413.2,31.5 547.6,31.5 612.6,88.2 "/>
 <polygon fill=<%=b.colors[1].value%> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
 <polygon fill=<%=b.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
 <polygon opacity="0.6" fill="#FFFFFF" points="344.8,317.3 413.1,246.4 548.5,246.4 613.1,187.3 613.1,132 548.5,191.1 
 	413.1,191.1 344.8,262 "/>
-<polyline fill="#FFFFFF" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="613.7,88 546.6,147.1 414,146.1 
+<polyline fill="#FFFFFF" stroke="#000000" stroke-width="1" stroke-miterlimit="10" points="613.7,88 546.6,147.1 414,146.1 
 	345.1,87.4 "/>
 </svg>
-
-<h2>NAME <%= link_to b.name, beverage_path(b.id)  %></h2>
-<h3>by <%= b.user_id %> </h3>
-
+<div class="bev-names">
+<h2><%= link_to b.name, beverage_path(b.id)  %></h2>
+<div class="btn-group">
+<button type="button" class="btn btn-default btn-sm">
+  Y
+</button>
+<button type="button" class="btn btn-default btn-sm">
+  N
+</button>
+<button type="button" class="btn btn-default btn-sm">
+  whatever
+</button>
+</div>
+</div>
 </div>
 
 
 <% end %>
+</div>
+<div class="row">
+<ul class="pager">
+<%= will_paginate @beverages, :page_links => false %>
+</ul>
+</div>
+</div>
 
 

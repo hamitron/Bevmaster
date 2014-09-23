@@ -10,8 +10,8 @@ gem 'sass-rails', '~> 4.0.3'
 
 gem 'bootstrap-sass'
 
-gem 'angularjs-rails'
-
+#snap.svg for animating svg's... like you know everything in this project
+gem 'snapsvg-rails'
 
 #state machine for voting. more than true false
 gem 'state_machine', '~>1.2.0'
@@ -21,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-
+gem 'will_paginate', '~> 3.0.5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,6 +1,6 @@
 class BeveragesController < ApplicationController
   def index
-    @beverages = Beverage.all
+    @beverages = Beverage.paginate(:page => params[:page], :per_page => 3)
 
   end
 

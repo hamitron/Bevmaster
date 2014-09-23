@@ -23,6 +23,6 @@
 </div>
 <%= form_for @votes do |f| %>
 <%= f.select :state, [['bad', :negative], ['meh',:meh], ['flag',:flagged], ['love', :positive ] ]%>
-<%= f.hidden_field :user_id, :value => current_user.id %>
+
 <%= f.submit %>
 <% end %>
