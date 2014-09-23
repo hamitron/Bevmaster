@@ -1,11 +1,22 @@
+<div class="container">
 
-<div class="container jumbotron">
+<div class="bev-logo">
+<!-- the logo goes here. loads in CSS -->
+</div>
+
+
 <% @beverages.each do |b| %>
+<!-- create svg cans on the fly using rails -->
 
 <div class="col-md-4">
+<div class="well well-sm">
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+
+
+<svg class="can" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 960 560" >
+	 <g>
 <polygon fill=<%=b.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
 <polygon fill=<%=b.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
 <rect fill=<%=b.colors[1].value %>  x="412" y="148.2" width="137" height="368"/>
@@ -17,33 +28,30 @@
 	L403.8,113.2z"/>
 <polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.6,443.8 413,412.7 548.3,412.7 612.9,386.7 
 	612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
+	</g>
 </svg>
 
 
 
 <div class="bev-names">
+
 	<h2><%= link_to b.name, beverage_path(b.id)  %></h2>
-			<h2><span class="label label-success"><%= Vote.where(beverage_id: b.id, state: "positive").count %></span>
+			<h3><span class="label label-success"><%= Vote.where(beverage_id: b.id, state: "positive").count %></span>
 			<span class="label label-default"><%= Vote.where(beverage_id: b.id, state: "meh").count %></span>
-			<span class="label label-danger"><%= Vote.where(beverage_id: b.id, state: "negative").count %></span></h2>
-
-
-
-
-
+			<span class="label label-danger"><%= Vote.where(beverage_id: b.id, state: "negative").count %></span></h3>
 
 <% if current_user != nil %>
 <% if Vote.where(beverage_id: b.id, user_id: current_user.id ).first == nil %>
-<%= form_for Beverage.where(id: b.id).first.votes.new do |f| %>
-<%= f.select :state,[['love', :positive ], ['meh',:meh], ['bad', :negative]]%>
-<%= f.hidden_field :beverage_id, :value => b.id %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit %>
-<% end %>
+	<%= form_for Beverage.where(id: b.id).first.votes.new do |f| %>
+		<%= f.select :state,[['love', :positive ], ['meh',:meh], ['bad', :negative]]%>
+		<%= f.hidden_field :beverage_id, :value => b.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit %>
+	<% end %>
 <% end %>
 <% end %>
 </div>
-
+</div>
 </div>
 
 
@@ -51,9 +59,17 @@
 </div>
 <div class="row">
 <ul class="pager">
-<%= will_paginate @beverages, :page_links => false %>
+<h1><%= will_paginate @beverages, :page_links => false, :next_label => ">", :previous_label => "<", :link_separator => " " %></h1>
 </ul>
 
-</div>
+<script>
+var s = Snap(".can");
+var g = s.select("g");
 
+ g.mouseover(  function() { g.animate({ transform: 's4r20,5,-5' }, 1000, mina.bounce ) } );
+ g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
+
+
+
+</script>
 

@@ -2,6 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.bev-logo {
+
+	height: 300px;
+	padding: 0;
+	background-image: url(logotext.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.pagination {
+
+	a {
+		color: white;
+	}
+	a:hover {
+		color: lightgreen;
+		text-decoration: none;
+	}
+}
 .bev-names {
+	padding: 5px;
+	background-color: rgba(210,210,210,1);
+	font-family: 'Orbitron', sans-serif;
+
+	a {
+		color: black;
+	}
+	a:hover {
+		color: grey;
+		text-decoration: none;
+	}
 	text-align: center;
 }

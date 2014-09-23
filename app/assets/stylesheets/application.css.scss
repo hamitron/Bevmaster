@@ -14,4 +14,12 @@
  *= require_self
  */
 @import 'bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Orbitron:400,700);
 
+.well-sm {
+	padding: 0;
+}
+body {
+	background-image: url(bgtop.png);
+	background-repeat: cover;
+}
