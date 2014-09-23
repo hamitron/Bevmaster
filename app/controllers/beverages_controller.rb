@@ -1,7 +1,7 @@
 class BeveragesController < ApplicationController
   def index
     @beverages = Beverage.paginate(:page => params[:page], :per_page => 3)
-
+    @votes = Vote.new
   end
 
   def new

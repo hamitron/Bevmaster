@@ -11,8 +11,10 @@ def new
 end
 
 def create
-	@beverage = Beverage.all
+	@beverages = Beverage.all
     @vote = Vote.new(vote_params)
+
+
     if @vote.save
       redirect_to beverages_path
     else
@@ -23,7 +25,7 @@ end
 
 private
 def vote_params
-	params.require(:vote).permit(:state, :user_id)
+	params.require(:vote).permit(:state, :user_id, :beverage_id)
 end
 
 

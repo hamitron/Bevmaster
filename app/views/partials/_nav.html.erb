@@ -1,7 +1,7 @@
 
-<p>current USER is: <% if current_user %> 
-<%= current_user.name %> id= <%= current_user.id %>
+<p><% if current_user %> 
+<h2><%= current_user.name %> id= <%= current_user.id %></h2>
 <% else %>
-SIGN IN OR UP 
+<%= link_to "SIGN IN", new_session_path %> 
 <% end %>
 </p>
