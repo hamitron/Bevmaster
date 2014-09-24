@@ -38,7 +38,7 @@
 </div>
 	<div class="col-md-6 jumbotron">
 	<p>Beverage: </p>
-		<h1><%= @beverage.name %></h1>
+		<h2><%= @beverage.name %></h2>
 		<p> By: User </p> 
 		<h3><div href="#" class="label label-success">
 		<%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
@@ -52,12 +52,7 @@
 </div>
 
 
-
-
-
-
-
-
+<%= include_gon %>
 
 
 <script type="text/javascript">
@@ -69,6 +64,45 @@ var g = s.select("g");
 
  g.mouseover(  function() { g.animate({ transform: 's3r3,6,5' }, 1000, mina.bounce ) } );
  g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
+
+// Dataset for pie chart
+var dataset = {
+  states: [gon.positive, gon.meh, gon.negative],
+};
+
+var width = 460,
+    height = 300,
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scale.ordinal()
+    .range(["#3ab936", "#5d5d5d",  "#ff2316"]);
+
+var pie = d3.layout.pie()
+    .sort(null);
+
+var arc = d3.svg.arc()
+    .innerRadius(radius - 75)
+    .outerRadius(radius - 50);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var path = svg.selectAll("path")
+    .data(pie(dataset.states))
+  .enter().append("path")
+    .attr("fill", function(d, i) { return color(i); })
+    .transition().delay(function(d, i) { return i * 800; }).duration(800)
+  .attrTween('d', function(d) {
+       var i = d3.interpolate(d.startAngle, d.endAngle);
+       return function(t) {
+           d.endAngle = i(t);
+         return arc(d);
+       }
+  });
+
 
 
 
