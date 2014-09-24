@@ -1,11 +1,10 @@
-
 <div class="container">
 
-<div class="row">
-<div class="col-md-6">
+
+<div class="col-md-6 bev-contain">
 
 <svg version="1.1" id="can" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 960 560" >
+	 viewBox="0 0 960 540" >
 	 <g>
 <polygon fill=<%=@beverage.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
 <polygon fill=<%=@beverage.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
@@ -21,21 +20,8 @@
 	</g>
 </svg>
 
+<div class="col-md-12 bev-user">
 
-
-</div>
-	<div class="col-md-6 jumbotron">
-	<p>Beverage: </p>
-		<h1><%= @beverage.name %></h1>
-		<p> By: User </p> 
-		<h3><span class="label label-success"><%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></span>
-		<span class="label label-default"><%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></span>
-		<span class="label label-danger"><%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></span></h3>
-		</p>
-	</div>
-</div>
-
-<div class="row bev-user">
 <h1> THIS BEVERAGE 
 <% if Vote.where(beverage_id: @beverage.id, state: "positive").count > 
 	Vote.where(beverage_id: @beverage.id, state: "negative").count %>
@@ -47,19 +33,36 @@
 	SUCKS
 	<% end %>
 	</h1>
-
-
-
-
-
-
-
-</div>
-<div class="row">
-<%= link_to "Back", beverages_path %>
 </div>
 
-<script>
+</div>
+	<div class="col-md-6 jumbotron">
+	<p>Beverage: </p>
+		<h1><%= @beverage.name %></h1>
+		<p> By: User </p> 
+		<h3><div href="#" class="label label-success">
+		<%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
+		<div href="#" class="label label-default">
+		<%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></div>
+		<div href="#" class="label label-danger">
+		<%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></div></h3>
+		</p>
+		<%= link_to "Back", beverages_path %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
 
 var s = Snap("#can");
 var g = s.select("g");
