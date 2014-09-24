@@ -1,10 +1,12 @@
 
 <div class="container">
 
+<div class="row">
 <div class="col-md-6">
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="can" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 960 560" >
+	 <g>
 <polygon fill=<%=@beverage.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
 <polygon fill=<%=@beverage.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
 <rect fill=<%=@beverage.colors[1].value %>  x="412" y="148.2" width="137" height="368"/>
@@ -16,15 +18,55 @@
 	L403.8,113.2z"/>
 <polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.6,443.8 413,412.7 548.3,412.7 612.9,386.7 
 	612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
+	</g>
 </svg>
 
 
 
 </div>
-	<div class="col-md-6">
+	<div class="col-md-6 jumbotron">
+	<p>Beverage: </p>
 		<h1><%= @beverage.name %></h1>
+		<p> By: User </p> 
 		<h3><span class="label label-success"><%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></span>
 		<span class="label label-default"><%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></span>
 		<span class="label label-danger"><%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></span></h3>
+		</p>
 	</div>
 </div>
+
+<div class="row bev-user">
+<h1> THIS BEVERAGE 
+<% if Vote.where(beverage_id: @beverage.id, state: "positive").count > 
+	Vote.where(beverage_id: @beverage.id, state: "negative").count %>
+	IS AWESOME
+	<% elsif Vote.where(beverage_id: @beverage.id, state: "positive").count == 
+	Vote.where(beverage_id: @beverage.id, state: "negative").count %>
+	IS OK
+	<% else %>
+	SUCKS
+	<% end %>
+	</h1>
+
+
+
+
+
+
+
+</div>
+<div class="row">
+<%= link_to "Back", beverages_path %>
+</div>
+
+<script>
+
+var s = Snap("#can");
+var g = s.select("g");
+
+ g.mouseover(  function() { g.animate({ transform: 's3r3,6,5' }, 1000, mina.bounce ) } );
+ g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
+
+
+
+</script>

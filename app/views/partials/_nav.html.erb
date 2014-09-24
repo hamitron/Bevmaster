@@ -1,7 +1,10 @@
-
-<p><% if current_user %> 
-<%= current_user.name %> id= <%= current_user.id %>
+<nav class="navbar navbar-fixed-bottom" role="navigation">
+  <div class="container">
+<h1><% if current_user == nil%> 
+<h3><%= link_to "Log In ", new_session_path %><%= link_to "Or Sign Up", new_user_path %></h3>
 <% else %>
-<%= link_to "SIGN IN", new_session_path %> 
+<h4>Hello <%= current_user.name %>, <%= link_to "Add Your Own", new_beverage_path %> </h4>
 <% end %>
-</p>
+</h1>
+</div>
+</nav>

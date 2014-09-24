@@ -26,7 +26,13 @@ class BeveragesController < ApplicationController
 
   def show
     @beverage = Beverage.find(params[:id])
-    @votes = Vote.new
+    @votes = @beverage.votes
+    gon.watch.bevId = @beverage.id 
+    gon.watch.jbuilder
+    # gon.watch.positive = @votes.where(state: 'positive')
+    # gon.watch.negative = @votes.where(state: 'negative')
+    # gon.watch.meh = @votes.where(state: 'meh')
+
   end
 
   def edit

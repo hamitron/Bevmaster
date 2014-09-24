@@ -1,2 +1,64 @@
-<%= current_user.name %>
+<div class="container">
 
+
+<!-- the logo goes here. loads in CSS -->
+<div class="bev-user">
+<h1><%=@user.name %></h1>
+</div>
+
+
+<% @beverages.each do |b| %>
+<!-- create svg cans on the fly using rails -->
+
+<div class="col-md-3">
+<div class="well well-sm">
+
+<svg id="can" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 960 560" >
+	 <g>
+<polygon fill=<%=b.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
+<polygon fill=<%=b.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
+<rect fill=<%=b.colors[1].value %>  x="412" y="148.2" width="137" height="368"/>
+<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.8,193.1 413.1,179.3 548.5,179.3 613.1,167.9 
+	613.1,157.1 548.5,168.6 413.1,168.6 344.8,182.4 "/>
+<rect x="378.9" y="57.1" transform="matrix(0.776 -0.6307 0.6307 0.776 39.3807 284.1144)" width="81.6" height="59.1"/>
+<rect x="451.3" y="60.7" fill="#C6C6C6" width="37.3" height="41.3"/>
+<path fill="#939393" d="M547,31.3H412.6l-68.1,58.9l68.9,58.7H548l65.1-58.1L547,31.3z M403.8,113.2l-26.4-21.5l75-27.6l26.4,22.5
+	L403.8,113.2z"/>
+<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.6,443.8 413,412.7 548.3,412.7 612.9,386.7 
+	612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
+	</g>
+</svg>
+
+
+<div class="bev-names">
+
+	<h4><%= link_to b.name, beverage_path(b.id)  %></h4>
+			<h3><span class="label label-success"><%= Vote.where(beverage_id: b.id, state: "positive").count %></span>
+			<span class="label label-default"><%= Vote.where(beverage_id: b.id, state: "meh").count %></span>
+			<span class="label label-danger"><%= Vote.where(beverage_id: b.id, state: "negative").count %></span></h3>
+
+<% if current_user != nil %>
+<% if Vote.where(beverage_id: b.id, user_id: current_user.id ).first == nil %>
+	<%= form_for Beverage.where(id: b.id).first.votes.new do |f| %>
+		<%= f.select :state,[['love', :positive ], ['meh',:meh], ['bad', :negative]]%>
+		<%= f.hidden_field :beverage_id, :value => b.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit %>
+	<% end %>
+<% end %>
+<% end %>
+</div>
+</div>
+</div>
+
+
+<% end %>
+
+
+
+</div>
+<div class="row">
+<ul class="pager">
+<h1><%= will_paginate @beverages, :page_links => false, :next_label => ">", :previous_label => "<", :link_separator => " " %></h1>
+</ul>

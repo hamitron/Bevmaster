@@ -4,7 +4,6 @@
 <!-- the logo goes here. loads in CSS -->
 </div>
 
-
 <% @beverages.each do |b| %>
 <!-- create svg cans on the fly using rails -->
 
@@ -14,7 +13,7 @@
 
 
 
-<svg class="can" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+<svg id="can" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 960 560" >
 	 <g>
 <polygon fill=<%=b.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
@@ -30,7 +29,6 @@
 	612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
 	</g>
 </svg>
-
 
 
 <div class="bev-names">
@@ -56,20 +54,15 @@
 
 
 <% end %>
+
+
+
 </div>
 <div class="row">
 <ul class="pager">
 <h1><%= will_paginate @beverages, :page_links => false, :next_label => ">", :previous_label => "<", :link_separator => " " %></h1>
 </ul>
 
-<script>
-var s = Snap(".can");
-var g = s.select("g");
-
- g.mouseover(  function() { g.animate({ transform: 's4r20,5,-5' }, 1000, mina.bounce ) } );
- g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
 
 
-
-</script>
 

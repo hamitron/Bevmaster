@@ -1,12 +1,17 @@
 <div class="container">
-<div class="col-md-6">
-<%= form_for @beverage do |f|%>
-<p><%= f.text_field :name, placeholder: "Name" %></p>
+
+
+<div class="jumbotron">
+<div class="new-bev-logo">
+<!-- the logo goes here. loads in CSS -->
+</div>
+<%= bootstrap_form_for @beverage do |f|%>
+<p><%= f.text_field :name, placeholder: "Name", label: "Beverage Name" %></p>
 <!-- create associated colors -->
 <%= f.fields_for :colors do |color|%>
-<%= color.text_field :name, placeholder: "Color Name" %>
-<%= color.color_field :value %> 
-
+<div class="col-sm-4">
+<%= color.color_field :value, label: "Color" %> 
+</div>
 <% end %>
 
 
@@ -15,4 +20,12 @@
 
 
 </div>
+
+
+</div>
+
+
+<div class="bev-add">
+
+<h2><%= link_to "Back", beverages_path %> </h2>
 </div>

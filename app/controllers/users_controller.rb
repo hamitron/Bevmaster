@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @beverages = Beverage.where(user_id: @user).paginate(:page => params[:page], :per_page => 4)
   end
 
   def edit

@@ -1,9 +1,10 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-<%= form_for @user do |f|%>
-<%= f.text_field :name, placeholder:"NAME" %>
-<%= f.text_field :email, placeholder:"EMAIL" %>
-<%= f.password_field :password, placeholder:"PASS" %>
-<%= f.password_field :password_confirmation, placeholder:"Pass CONF" %>
+<div class="container jumbotron">
+<h1> Sign Up Here </h1>
+<%= bootstrap_form_for @user do |f|%>
+<%= f.text_field :name, placeholder:"your name" %>
+<%= f.text_field :email, placeholder:"your email (don't worry we wont spam you)" %>
+<%= f.password_field :password, placeholder:"password" %>
+<%= f.password_field :password_confirmation, placeholder:"type that password again" %>
 <%= f.submit %>
 <% end %>
+</div>

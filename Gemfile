@@ -7,11 +7,19 @@ gem 'rails', '4.1.5'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-
+gem 'gon'
 gem 'bootstrap-sass'
 
 #snap.svg for animating svg's... like you know everything in this project
 gem 'snapsvg-rails'
+
+#bootstrap form helper
+gem 'bootstrap_form'
+
+#D3.js
+gem 'd3_rails'
+
+
 
 #state machine for voting. more than true false
 gem 'state_machine', '~>1.2.0'
