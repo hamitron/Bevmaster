@@ -46,11 +46,11 @@
 		<div id="piechart" class="bev-contain">
 
 		<h3><div href="#" class="label label-success">
-		<%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
+		<%=image_tag "check.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
 		<div href="#" class="label label-default">
-		<%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></div>
+		 <%= image_tag "dash.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></div>
 		<div href="#" class="label label-danger">
-		<%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></div></h3>
+		<%=image_tag "x.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></div></h3>
 		</p>
 		
 		
@@ -73,9 +73,12 @@ var g = s.select("g");
  g.mouseover(  function() { g.animate({ transform: 's3r3,6,5' }, 1000, mina.bounce ) } );
  g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
 
+
+
+
 // Dataset for pie chart
 var dataset = {
-  states: [gon.positive, gon.meh, gon.negative],
+  states: [gon.positive, gon.meh, gon.negative]
 };
 
 var width = 460,
@@ -85,12 +88,13 @@ var width = 460,
 var color = d3.scale.ordinal()
     .range(["#3ab936", "#5d5d5d",  "#ff2316"]);
 
+
 var pie = d3.layout.pie()
     .sort(null);
 
 var arc = d3.svg.arc()
     .innerRadius(radius - 75)
-    .outerRadius(radius - 50);
+    .outerRadius(radius - 40);
 
 var svg = d3.select("#piechart").append("svg")
     .attr("width", width)
@@ -110,7 +114,6 @@ var path = svg.selectAll("path")
          return arc(d);
        }
   });
-
 
 
 
