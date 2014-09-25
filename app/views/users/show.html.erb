@@ -48,12 +48,13 @@
 </div>
 
 <div class="row">
-	
+	<!-- separates the large amount of cans into smaller more managable groups -->
 	<h1><%= will_paginate @beverages, :page_links => false, :next_label => ">", :previous_label => "<", :link_separator => " " %></h1>
 	
 
 </div>
 
+<!-- User statistics -->
 	<div class="container bev-contain">
 			<div class="bev-contain">
 				<%=@user.name %>'s Stats
@@ -93,6 +94,7 @@
 
 <div class="back-button">
 
-<h4><%= link_to "To Beverages!", beverages_path %>	</h4>
+	<h4><%= link_to "To Beverages!", beverages_path %></h4>
+
 </div>
 

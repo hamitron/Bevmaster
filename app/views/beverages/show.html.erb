@@ -1,68 +1,77 @@
 <div class="container">
 
-
+<!-- build an svg -->
 <div class="col-md-6 bev-contain">
 
-<svg version="1.1" id="can" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 960 540" >
-	 <g>
-<polygon fill=<%=@beverage.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
-<polygon fill=<%=@beverage.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
-<rect fill=<%=@beverage.colors[1].value %>  x="412" y="148.2" width="137" height="368"/>
-<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.8,193.1 413.1,179.3 548.5,179.3 613.1,167.9 
-	613.1,157.1 548.5,168.6 413.1,168.6 344.8,182.4 "/>
-<rect x="378.9" y="57.1" transform="matrix(0.776 -0.6307 0.6307 0.776 39.3807 284.1144)" width="81.6" height="59.1"/>
-<rect x="451.3" y="60.7" fill="#C6C6C6" width="37.3" height="41.3"/>
-<path fill="#939393" d="M547,31.3H412.6l-68.1,58.9l68.9,58.7H548l65.1-58.1L547,31.3z M403.8,113.2l-26.4-21.5l75-27.6l26.4,22.5
-	L403.8,113.2z"/>
-<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.6,443.8 413,412.7 548.3,412.7 612.9,386.7 
-	612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
-	</g>
-</svg>
+	<svg version="1.1" id="can" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 960 540" >
+		 <g>
+	<polygon fill=<%=@beverage.colors[0].value %> points="344.7,89.8 413.2,148.2 413.2,516.3 344.7,456 "/>
+	<polygon fill=<%=@beverage.colors[2].value%> points="547.9,148.9 612.9,90.9 612.9,454.9 547.9,516.2 "/>
+	<rect fill=<%=@beverage.colors[1].value %>  x="412" y="148.2" width="137" height="368"/>
+	<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.8,193.1 413.1,179.3 548.5,179.3 613.1,167.9 
+		613.1,157.1 548.5,168.6 413.1,168.6 344.8,182.4 "/>
+	<rect x="378.9" y="57.1" transform="matrix(0.776 -0.6307 0.6307 0.776 39.3807 284.1144)" width="81.6" height="59.1"/>
+	<rect x="451.3" y="60.7" fill="#C6C6C6" width="37.3" height="41.3"/>
+	<path fill="#939393" d="M547,31.3H412.6l-68.1,58.9l68.9,58.7H548l65.1-58.1L547,31.3z M403.8,113.2l-26.4-21.5l75-27.6l26.4,22.5
+		L403.8,113.2z"/>
+	<polygon opacity="0.25" fill="#FFFFFF" enable-background="new    " points="344.6,443.8 413,412.7 548.3,412.7 612.9,386.7 
+		612.9,362.5 548.3,388.4 413,388.4 344.6,419.5 "/>
+		</g>
+	</svg>
 
 <div class="col-md-12 bev-user">
 
+<!--This is the "beverage master" who says his opinion about the design -->
 <h1> THIS BEVERAGE 
-<% if Vote.where(beverage_id: @beverage.id, state: "positive").count > 
-	Vote.where(beverage_id: @beverage.id, state: "negative").count %>
-	IS AWESOME
+<!--logic to compare positive to negative to neutral votes -->
+	<% if Vote.where(beverage_id: @beverage.id, state: "positive").count > 
+		Vote.where(beverage_id: @beverage.id, state: "negative").count %>
+			IS AWESOME
 	<% elsif Vote.where(beverage_id: @beverage.id, state: "positive").count == 
-	Vote.where(beverage_id: @beverage.id, state: "negative").count %>
-	IS OK
+		Vote.where(beverage_id: @beverage.id, state: "negative").count %>
+			IS OK
 	<% else %>
-	SUCKS
-<% end %>
-	</h1>
+			SUCKS
+	<% end %>
+</h1>
 </div>
-<div class="back-button">
 
-<h3><%= link_to "Back", beverages_path %>	</h3>
-</div>
-</div>
-	<div class="col-md-6 jumbotron">
-	<div class="bev-names">
-			<h2><%= @beverage.name %></h2>
-			<h4>By <%= link_to User.find(@beverage.user_id).name, user_path(@beverage.user_id) %></h4>
-		</p>
+	<div class="back-button">
+
+		<h3><%= link_to "Back", beverages_path %></h3>
+
 	</div>
+
+</div>
 	
-	<div id="piechart" class="bev-contain">
-
-		<h3><div href="#" class="label label-success">
-		<%=image_tag "check.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
-		<div href="#" class="label label-default">
-		 <%= image_tag "dash.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "meh").count %></div>
-		<div href="#" class="label label-danger">
-		<%=image_tag "x.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></div></h3>
-		</p>
-		
-		
+	<div class="col-md-6 jumbotron">
+		<div class="bev-names">
+				<h2><%= @beverage.name %></h2>
+				<h4>By <%= link_to User.find(@beverage.user_id).name, user_path(@beverage.user_id) %></h4>
 		</div>
-		
-	</div>
+	
+		<div id="piechart" class="bev-contain">
+		<!-- Piechart loads here, as well as boxes that show vote distribution -->
+			<h3>
+				<div href="#" class="label label-success">
+					<%=image_tag "check.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "positive").count %>
+				</div>
+
+				<div href="#" class="label label-default">
+					 <%= image_tag "dash.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "meh").count %>
+				</div>
+
+				<div href="#" class="label label-danger">
+					 <%=image_tag "x.svg", size:"20x20" %> <%= Vote.where(beverage_id: @beverage.id, state: "negative").count %>
+				</div>
+			
+			</h3>
+			
+		</div>
 </div>
 
-<!--This tag is necessary to cheat the values into javascript. don't tell -->
+<!--This tag is necessary to push the values into javascript. don't tell -->
 <%= include_gon %>
 
 
@@ -79,15 +88,19 @@ var g = s.select("g");
 
 
 
-// Dataset for pie chart
+// Dataset for pie chart. the gon gem is like listening to Miley Cyrus.  Its some catchy stuff, but not
+// easy to admit to.
+
 var dataset = {
+// positive votes(green), meh votes (grey), negative votes (red). defined in the beverages controller.
   states: [gon.positive, gon.meh, gon.negative]
 };
 
 var width = 460,
     height = 300,
     radius = Math.min(width, height) / 2;
-// color range for pie chart
+
+// color range for pie chart. this pops each variable to a specific color.
 var color = d3.scale.ordinal()
     .range(["#3ab936", "#5d5d5d",  "#ff2316"]);
 
@@ -98,13 +111,14 @@ var pie = d3.layout.pie()
 var arc = d3.svg.arc()
     .innerRadius(radius - 75)
     .outerRadius(radius - 40);
-// i don't really love pie, but pie charts are cool
+// i don't really love pie, but pie charts are cool. create pie chart here.
 var svg = d3.select("#piechart").append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 // append the pie to put the data in it. sort of like appending the crust to put the filling in it. just a lot less tasty.
+// also the attrTween pops in the data in a slick animation.
 var path = svg.selectAll("path")
     .data(pie(dataset.states))
   .enter().append("path")
