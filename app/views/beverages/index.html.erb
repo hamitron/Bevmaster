@@ -59,8 +59,11 @@
 
 </div>
 <div class="row">
-<ul class="pager">
-<h1><%= will_paginate @beverages, :next_label => ">", :previous_label => "<", :link_separator => " " %></h1>
-</ul>
+<div class="pager">
+<h2><%= will_paginate @beverages, :next_label => ">", :previous_label => "<", :link_separator => " " %>
+<% if current_user != nil %>
+<h2 class="pagination"><%= link_to "+ Beverage", new_beverage_path %></h2>
+<% end %>
+</div>
 
 

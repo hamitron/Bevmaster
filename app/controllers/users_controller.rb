@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect new_sessions_path
+      redirect_to new_session_path
     else
       render 'new'
     end
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @beverages = Beverage.where(user_id: @user).paginate(:page => params[:page], :per_page => 4)
+    gon.watch.beverageTally = Beverage.where(user_id: @user).count
   end
 
   def edit
