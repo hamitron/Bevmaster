@@ -42,7 +42,7 @@
 	<div class="col-md-6 jumbotron">
 	<p>Beverage: </p>
 		<h2><%= @beverage.name %></h2>
-		<p> By: User </p> 
+		<p> By: <%= User.find(@beverage.user_id).name %> </p> 
 		<div id="piechart" class="bev-contain">
 
 		<h3><div href="#" class="label label-success">
