@@ -2,18 +2,21 @@
 
 
 <div class="jumbotron">
-<div class="new-bev-logo">
-<!-- the logo goes here. loads in CSS -->
-</div>
+
 <%= bootstrap_form_for @beverage do |f|%>
+<div class="col-md-8">
+<h1> New Beverage </h1>
 <p><%= f.text_field :name, placeholder: "Name", label: "Beverage Name" %></p>
 <!-- create associated colors -->
-<%= f.fields_for :colors do |color|%>
-<div class="col-sm-4">
-<%= color.color_field :value, label: "Color" %> 
 </div>
-<% end %>
+<div class="col-sm-4">
+<h3>Colors for Beverage </h3>
+<%= f.fields_for :colors do |color|%>
 
+<%= color.color_field :value, label: "_" %> 
+
+<% end %>
+</div>
 
 <%= f.submit %>
 <% end %>
@@ -25,7 +28,7 @@
 </div>
 
 
-<div class="bev-add">
+<div class="back-button">
 
 <h2><%= link_to "Back", beverages_path %> </h2>
 </div>

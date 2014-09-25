@@ -1,10 +1,16 @@
-<div class="jumbotron">
-	<h1>login</h1>
-	<%= form_for @user, {url: session_path} do |f| %>
+
+<div class="jumbotron container">
+	<div class="col-md-4">
+		<h1>login</h1>
+	</div>
+	<div class="col-md-8">
+		<%= bootstrap_form_for @user, {url: session_path} do |f| %>
 		<p><%= f.text_field :email, placeholder: "email" %>
-		<%= f.password_field :password, placeholder: "password" %></p>
-		<p><%= f.submit "Log In" %></p>
+			<%= f.password_field :password, placeholder: "password" %>
+			<%= f.submit "Log In" %></p>
 
 
 	<% end %>
+	</div>	
+</div>
 </div>

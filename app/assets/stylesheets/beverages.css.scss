@@ -19,7 +19,17 @@ body {
 	background-color: rgba(210,210,210,0.2);
 	border-radius: 10px; 
 }
-
+.back-button {
+	color: white;
+	
+	a {
+		color: white;
+	}
+	a:hover {
+		color: lightgreen;
+		text-decoration: none;
+	}
+}
 .bev-contain {
 	color: #ffb129;
 	margin: 0 auto;

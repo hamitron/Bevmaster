@@ -34,12 +34,17 @@
 	<% end %>
 	</h1>
 </div>
+<div class="back-button">
 
+<h3><%= link_to "Back", beverages_path %>	</h3>
+</div>
 </div>
 	<div class="col-md-6 jumbotron">
 	<p>Beverage: </p>
 		<h2><%= @beverage.name %></h2>
 		<p> By: User </p> 
+		<div id="piechart" class="bev-contain">
+
 		<h3><div href="#" class="label label-success">
 		<%= Vote.where(beverage_id: @beverage.id, state: "positive").count %></div>
 		<div href="#" class="label label-default">
@@ -47,7 +52,10 @@
 		<div href="#" class="label label-danger">
 		<%= Vote.where(beverage_id: @beverage.id, state: "negative").count %></div></h3>
 		</p>
-		<%= link_to "Back", beverages_path %>
+		
+		
+		</div>
+		
 	</div>
 </div>
 
@@ -84,7 +92,7 @@ var arc = d3.svg.arc()
     .innerRadius(radius - 75)
     .outerRadius(radius - 50);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#piechart").append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")

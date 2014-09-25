@@ -1,10 +1,14 @@
 <div class="container jumbotron">
-<h1> Sign Up Here </h1>
-<%= bootstrap_form_for @user do |f|%>
-<%= f.text_field :name, placeholder:"your name" %>
-<%= f.text_field :email, placeholder:"your email (don't worry we wont spam you)" %>
-<%= f.password_field :password, placeholder:"password" %>
-<%= f.password_field :password_confirmation, placeholder:"type that password again" %>
-<%= f.submit %>
-<% end %>
+<div class="col-md-4">
+<h1> Sign Up</h1>
+</div>
+	<div class="col-md-8">
+		<%= bootstrap_form_for @user do |f|%>
+		<%= f.text_field :name, placeholder:"your name" %>
+		<%= f.text_field :email, placeholder:"your email (don't worry we wont spam you)" %>
+		<%= f.password_field :password, placeholder:"password" %>
+		<%= f.password_field :password_confirmation, placeholder:"type that password again" %>
+		<%= f.submit %>
+		<% end %>
+	</div>
 </div>

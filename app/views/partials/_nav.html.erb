@@ -1,9 +1,18 @@
 <nav class="navbar navbar-fixed-bottom" role="navigation">
-  <div class="container">
+   <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+  <div class="container-fluid">
 <h1><% if current_user == nil%> 
-<h3><%= link_to "Log In ", new_session_path %><%= link_to "Or Sign Up", new_user_path %></h3>
+<p class="navbar-text"><%= link_to "Log In ", new_session_path %><%= link_to "Or Sign Up", new_user_path %></p>
 <% else %>
-<h4>Hello <%= current_user.name %>, <%= link_to "Add Your Own", new_beverage_path %> </h4>
+<p class="navbar-right">Your Name Is <%= current_user.name %>, <%= link_to "+", new_beverage_path %> </p>
 <% end %>
 </h1>
 </div>
