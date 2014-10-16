@@ -78,15 +78,15 @@
 <script type="text/javascript">
 
 
-// pops in the can on mouseover to show colors
+// pops in the can on mouseover to show colors. using the snap.svg JS library.
+// rails isnt happy with it, because you say require snap.svg and its all "dafuq u doin boi, u no require an svg here son"
+
 var s = Snap("#can");
 var g = s.select("g");
-
+//animates the can on mouse over.
  g.mouseover(  function() { g.animate({ transform: 's3r3,6,5' }, 1000, mina.bounce ) } );
+// animates can on mouse out.
  g.mouseout	(  function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) });
-
-
-
 
 // Dataset for pie chart. the gon gem is like listening to Miley Cyrus.  Its some catchy stuff, but not
 // easy to admit to.
@@ -107,16 +107,19 @@ var color = d3.scale.ordinal()
 // i love pie
 var pie = d3.layout.pie()
     .sort(null);
+
 // sets the inner donut hole and outer radius
 var arc = d3.svg.arc()
     .innerRadius(radius - 75)
     .outerRadius(radius - 40);
+
 // i don't really love pie, but pie charts are cool. create pie chart here.
 var svg = d3.select("#piechart").append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
 // append the pie to put the data in it. sort of like appending the crust to put the filling in it. just a lot less tasty.
 // also the attrTween pops in the data in a slick animation.
 var path = svg.selectAll("path")
